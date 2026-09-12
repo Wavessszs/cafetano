@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Caffè Latte",
+        "price": 130,
+        "category": "Beverages",
+        "description": "Rich espresso with steamed milk and a smooth, creamy finish."
+    },
+    {
+        "name": "Caramel Latte",
+        "price": 145,
+        "category": "Beverages",
+        "description": "Espresso and steamed milk blended with sweet caramel flavor."
+    },
+    {
+        "name": "Vanilla Latte",
+        "price": 145,
+        "category": "Beverages",
+        "description": "Smooth espresso and steamed milk with a sweet vanilla flavor."
+    },
+    {
+        "name": "Hazelnut Latte",
+        "price": 145,
+        "category": "Beverages",
+        "description": "Espresso and creamy steamed milk with a roasted hazelnut flavor."
+    },
+    {
+        "name": "Mocha",
+        "price": 150,
+        "category": "Beverages",
+        "description": "Espresso, steamed milk, and rich chocolate flavor finished with foam."
+    },
+    {
+        "name": "Caramel Macchiato",
+        "price": 155,
+        "category": "Beverages",
+        "description": "Espresso layered with steamed milk, vanilla, and caramel."
+    },
+    {
+        "name": "Cappuccino",
+        "price": 135,
+        "category": "Beverages",
+        "description": "Bold espresso balanced with steamed milk and thick creamy foam."
+    },
+    {
+        "name": "Caffè Americano",
+        "price": 110,
+        "category": "Beverages",
+        "description": "Espresso combined with hot water for a rich and smooth coffee."
+    },
+    {
+        "name": "Cold Brew",
+        "price": 140,
+        "category": "Beverages",
+        "description": "Slow-steeped coffee with a naturally smooth and refreshing finish."
+    },
+    {
+        "name": "Iced Caramel Latte",
+        "price": 150,
+        "category": "Beverages",
+        "description": "Chilled espresso and milk with a sweet caramel flavor."
+    },
+    {
+        "name": "Iced Vanilla Latte",
+        "price": 150,
+        "category": "Beverages",
+        "description": "Chilled espresso and milk with a smooth vanilla flavor."
+    },
+    {
+        "name": "Chocolate Chip Frappé",
+        "price": 165,
+        "category": "Beverages",
+        "description": "Blended coffee and chocolate with chocolate chips for a rich treat."
+    },
+    {
+        "name": "Strawberry Cream Frappé",
+        "price": 165,
+        "category": "Beverages",
+        "description": "A creamy blended strawberry drink with a sweet fruity finish."
+    },
+    {
+        "name": "Matcha Cream Latte",
+        "price": 155,
+        "category": "Beverages",
+        "description": "Smooth green tea matcha blended with creamy steamed milk."
+    },
+    {
+        "name": "Chocolate Croissant",
+        "price": 125,
+        "category": "Food",
+        "description": "Buttery flaky pastry filled with rich chocolate."
+    },
+    {
+        "name": "Butter Croissant",
+        "price": 105,
+        "category": "Food",
+        "description": "Classic flaky pastry with a rich buttery flavor."
+    },
+    {
+        "name": "Ham and Cheese Sandwich",
+        "price": 155,
+        "category": "Food",
+        "description": "Toasted sandwich with savory ham and melted cheese."
+    },
+    {
+        "name": "Chicken Pesto Sandwich",
+        "price": 175,
+        "category": "Food",
+        "description": "Grilled chicken, pesto, and cheese served in toasted bread."
+    },
+    {
+        "name": "Bacon and Egg Sandwich",
+        "price": 165,
+        "category": "Food",
+        "description": "Egg and crispy bacon with melted cheese in toasted bread."
+    },
+    {
+        "name": "Blueberry Muffin",
+        "price": 110,
+        "category": "Food",
+        "description": "Soft baked muffin filled with sweet blueberries."
+    },
+    {
+        "name": "Chocolate Chip Muffin",
+        "price": 110,
+        "category": "Food",
+        "description": "Soft chocolate muffin packed with chocolate chips."
+    },
+    {
+        "name": "Classic Cheesecake",
+        "price": 145,
+        "category": "Desserts",
+        "description": "Creamy cheesecake with a buttery biscuit crust."
+    },
+    {
+        "name": "Chocolate Cake",
+        "price": 140,
+        "category": "Desserts",
+        "description": "Moist chocolate cake layered with rich chocolate frosting."
+    },
+    {
+        "name": "Caramel Brownie",
+        "price": 125,
+        "category": "Desserts",
+        "description": "Rich fudgy brownie finished with a sweet caramel drizzle."
+    },
+    {
+        "name": "Cinnamon Roll",
+        "price": 120,
+        "category": "Desserts",
+        "description": "Soft cinnamon pastry topped with sweet cream icing."
+    },
+    {
+        "name": "Chocolate Cake Pop",
+        "price": 95,
+        "category": "Desserts",
+        "description": "Moist chocolate cake coated in a smooth chocolate shell."
+    }
+]

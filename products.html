@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - Coffee POS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="pos-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h1>coffeepos</h1>
+                <span>Coffee Shop Management</span>
+            </div>
+
+            <nav class="nav-menu">
+
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    <span>POS</span>
+                </a>
+
+                <a href="orders.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Orders</span>
+                </a>
+
+                <a href="products.html" class="nav-item active">
+                    <span class="nav-icon">□</span>
+                    <span>Products</span>
+                </a>
+
+                <a href="reports.html" class="nav-item">
+                    <span class="nav-icon">◫</span>
+                    <span>Reports</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="page-content">
+
+            <div class="page-header">
+
+                <div class="page-title">
+                    <h2>Products</h2>
+                    <p>Manage your coffee shop products and inventory.</p>
+                </div>
+
+                <button class="primary-button" id="add-product-button" onclick="add_product()">
+                    + Add Product
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH + FILTER -->
+
+            <div class="filters">
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input type="text" id="product-search" placeholder="Search products...">
+
+                </div>
+
+                <select class="filter-select" id="product-category-filter">
+
+                    <option value="">All Categories</option>
+                    <option value="food">Food</option>
+                    <option value="beverages">Beverages</option>
+                    <option value="desserts">Desserts</option>
+
+                </select>
+
+                <select class="filter-select" id="product-status-filter">
+
+                    <option value="">All Products</option>
+                    <option value="available">Available</option>
+                    <option value="unavailable">Unavailable</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PRODUCT GRID -->
+
+            <div class="product-grid" id="product-grid">
+
+                <!--
+                JavaScript will populate products here.
+            -->
+
+            </div>
+
+        </main>
+
+    </div>
+    <!-- =========================================
+     ADD PRODUCT MODAL
+========================================= -->
+
+    <div class="modal-overlay" id="add-product-modal">
+
+        <div class="product-modal">
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Product</h2>
+                    <p>Add a new item to your coffee shop menu.</p>
+                </div>
+
+                <button type="button" class="modal-close" id="close-product-modal" onclick="add_product()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- MODAL FORM -->
+
+            <form id="add-product-form">
+
+                <div class="form-grid">
+
+                    <!-- PRODUCT NAME -->
+
+                    <div class="form-group full-width">
+
+                        <label for="product-name">
+                            Product Name
+                        </label>
+
+                        <input type="text" id="product-name" name="product_name" placeholder="e.g. Caramel Latte"
+                            required>
+
+                    </div>
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="form-group">
+
+                        <label for="product-category">
+                            Category
+                        </label>
+
+                        <select id="product-category" name="category" required>
+
+                            <option value="" disabled selected>
+                                Select category
+                            </option>
+
+                            <option value="food">
+                                Food
+                            </option>
+
+                            <option value="beverages">
+                                Beverages
+                            </option>
+
+                            <option value="desserts">
+                                Desserts
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PRICE -->
+
+                    <div class="form-group">
+
+                        <label for="product-price">
+                            Price
+                        </label>
+
+                        <input type="number" id="product-price" name="price" min="0" step="0.01" placeholder="₱0.00"
+                            required>
+
+                    </div>
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group full-width">
+
+                        <label for="product-description">
+                            Description
+                        </label>
+
+                        <textarea id="product-description" name="description" rows="4"
+                            placeholder="Short description of the product..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MODAL FOOTER -->
+
+                <div class="modal-footer">
+
+                    <button type="button" class="modal-cancel" id="cancel-product">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button">
+                        Add Product
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+
+
+    fetch("products.json")
+        .then(response => response.json())
+        .then(data => {
+
+            const product_cards = data.map(products => {
+                const product_div = document.createElement("div");
+
+                product_div.innerHTML = products.name;
+
+                return product_div;
+            });
+
+            const product_grid = document.getElementById("product-grid");
+
+            product_cards.forEach(card => {
+                product_grid.appendChild(card);
+            });
+
+        });
+
+
+
+
+
+    let flag = true;
+    function add_product() {
+        const modal = document.getElementById("add-product-modal");
+
+        flag = !flag;
+
+        if (!flag) {
+
+            modal.style.display = "flex";
+        }
+        else {
+            modal.style.display = "none";
+        }
+    }
+
+    const product_grid = document.getElementById("product-grid");
+    const add_product_form = document.getElementById("add-product-form");
+
+
+    function renderProducts() {
+
+        fetch("products.json")
+            .then(response => response.json())
+            .then(predefined_products => {
+
+                const saved_products =
+                    JSON.parse(localStorage.getItem("products")) || [];
+
+                const all_products = [
+                    ...predefined_products,
+                    ...saved_products
+                ];
+
+                product_grid.innerHTML = "";
+
+                const product_cards = all_products.map(product => {
+
+                    const product_div = document.createElement("div");
+
+                    product_div.classList.add("product-card");
+
+                    product_div.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.category}</p>
+                    <p>₱${product.price}</p>
+                    <p>${product.description}</p>
+                `;
+
+                    return product_div;
+                });
+
+                product_cards.forEach(card => {
+                    product_grid.appendChild(card);
+                });
+            });
+    }
+
+
+    add_product_form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const product_name =
+            document.getElementById("product-name").value;
+
+        const category =
+            document.getElementById("product-category").value;
+
+        const price =
+            document.getElementById("product-price").value;
+
+        const description =
+            document.getElementById("product-description").value;
+
+
+        const new_product = {
+            name: product_name,
+            category: category,
+            price: price,
+            description: description
+        };
+
+
+        const saved_products =
+            JSON.parse(localStorage.getItem("products")) || [];
+
+        saved_products.push(new_product);
+
+        localStorage.setItem(
+            "products",
+            JSON.stringify(saved_products)
+        );
+
+
+        renderProducts();
+
+        add_product_form.reset();
+    });
+
+
+    renderProducts();
+
+</script>
+
+</html>

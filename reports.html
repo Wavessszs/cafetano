@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports - Coffee POS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="pos-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h1>coffeepos</h1>
+            <span>Coffee Shop Management</span>
+        </div>
+
+        <nav class="nav-menu">
+
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">▦</span>
+                <span>POS</span>
+            </a>
+
+            <a href="orders.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Orders</span>
+            </a>
+
+            <a href="products.html" class="nav-item">
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+            <a href="reports.html" class="nav-item active">
+                <span class="nav-icon">◫</span>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="page-content">
+
+        <div class="page-header">
+
+            <div class="page-title">
+
+                <h2>Reports</h2>
+
+                <p>
+                    Monitor sales and coffee shop performance.
+                </p>
+
+            </div>
+
+            <select
+                class="filter-select"
+                id="report-period">
+
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+                <option value="year">This Year</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats-grid">
+
+            <div class="card stat-card">
+
+                <p>Total Sales</p>
+
+                <h3 id="total-sales">
+                    ₱0.00
+                </h3>
+
+                <div class="stat-change">
+                    +0% from previous period
+                </div>
+
+            </div>
+
+
+            <div class="card stat-card">
+
+                <p>Total Orders</p>
+
+                <h3 id="total-orders">
+                    0
+                </h3>
+
+                <div class="stat-change">
+                    +0% from previous period
+                </div>
+
+            </div>
+
+
+            <div class="card stat-card">
+
+                <p>Average Order</p>
+
+                <h3 id="average-order">
+                    ₱0.00
+                </h3>
+
+                <div class="stat-change">
+                    +0% from previous period
+                </div>
+
+            </div>
+
+
+            <div class="card stat-card">
+
+                <p>Products Sold</p>
+
+                <h3 id="products-sold">
+                    0
+                </h3>
+
+                <div class="stat-change">
+                    +0% from previous period
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REPORTS -->
+
+        <div class="report-grid">
+
+            <div class="card report-card">
+
+                <h3>Sales Overview</h3>
+
+                <div
+                    class="chart-placeholder"
+                    id="sales-chart">
+
+                    Chart will be populated later
+
+                </div>
+
+            </div>
+
+
+            <div class="card report-card">
+
+                <h3>Top Products</h3>
+
+                <div
+                    id="top-products">
+
+                    <!--
+                        JavaScript can populate
+                        top-selling products here.
+                    -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORY SALES -->
+
+        <br>
+
+        <div class="card table-card">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Category</th>
+                        <th>Orders</th>
+                        <th>Items Sold</th>
+                        <th>Sales</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="category-report-body">
+
+                    <!--
+                        JavaScript will populate
+                        category report data.
+                    -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
