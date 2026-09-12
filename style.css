@@ -1,473 +1,901 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f5fa;
+    color: #292631;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   GLOBAL LAYOUT
+========================================= */
+
+.pos-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background: #5d52b8;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 18px;
+    flex-shrink: 0;
+}
+
+.logo {
+    padding: 0 15px;
+    margin-bottom: 45px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 16px;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+}
+
+.nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+
+/* =========================================
+   GENERAL PAGE
+========================================= */
+
+.page-content {
+    flex: 1;
+    min-width: 0;
+    padding: 35px;
+    background: #faf9fc;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title h2 {
+    font-size: 28px;
+    color: #353044;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    font-size: 13px;
+    color: #96919f;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.primary-button {
+    border: none;
+    background: #5d52b8;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.primary-button:hover {
+    background: #4d43a2;
+}
+
+.secondary-button {
+    border: none;
+    background: #f0edf6;
+    color: #5d52b8;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-box {
+    position: relative;
+    margin: 10px;
+}
+
+.search-box input {
+
+    width: 250px;
+    border: none;
+    outline: none;
+    background: white;
+    padding: 13px 15px 13px 40px;
+    border-radius: 11px;
+    box-shadow: 0 3px 15px rgba(60, 48, 100, 0.06);
+    font-size: 13px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9994a4;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(60, 48, 100, 0.05);
+}
+
+
+/* =========================================
+   POS
+========================================= */
+
+.pos-products {
+    flex: 1;
+    padding: 35px;
+}
+
+.categories {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.category {
+    border: none;
+    background: white;
+    color: #777280;
+    padding: 13px 27px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 3px 15px rgba(60, 48, 100, 0.05);
+}
+
+.category:hover {
+    background: #f0edff;
+    color: #5d52b8;
+}
+
+.category.active {
+    background: #5d52b8;
+    color: white;
+}
+
+.product-area {
+    min-height: 600px;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(60, 48, 100, 0.05);
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================
+   POS ORDER PANEL
+========================================= */
+
+.order-panel {
+    width: 390px;
+    min-height: 100vh;
+    background: white;
+    border-left: 1px solid #eeeaf3;
+    padding: 35px 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.order-header h2 {
+    font-size: 21px;
+}
+
+.order-number {
+    display: block;
+    font-size: 12px;
+    color: #9a95a3;
+    margin-top: 4px;
+}
+
+.order-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.info-box {
+    flex: 1;
+    background: #f7f5fa;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.info-box label {
+    display: block;
+    font-size: 10px;
+    color: #9993a2;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.info-box span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.order-items-title {
+    display: flex;
+    justify-content: space-between;
+    color: #77717f;
+    font-size: 11px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eeeaf1;
+}
+
+#order-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.order-summary {
+    border-top: 1px solid #eeeaf1;
+    padding-top: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #77717f;
+}
+
+.summary-row span:last-child {
+    color: #494353;
+    font-weight: 600;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed #ddd8e5;
+}
+
+.total-price {
+    font-size: 25px;
+    font-weight: 700;
+    color: #5d52b8;
+}
+
+.payment-button {
+    width: 100%;
+    border: none;
+    background: #5d52b8;
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.clear-button {
+    width: 100%;
+    border: none;
+    background: #f3f0f8;
+    color: #77717f;
+    padding: 13px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   TABLES
+========================================= */
+
+.table-card {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 15px;
+    font-size: 11px;
+    color: #9993a2;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eeeaf1;
+}
+
+.data-table td {
+    padding: 17px 15px;
+    font-size: 13px;
+    color: #4b4654;
+    border-bottom: 1px solid #f1eef4;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.status.completed {
+    background: #e9f7ef;
+    color: #3a9561;
+}
+
+.status.pending {
+    background: #fff5df;
+    color: #c58b25;
+}
+
+.status.cancelled {
+    background: #fceaea;
+    color: #c65b5b;
+}
+
+.status.active {
+    background: #eeeaff;
+    color: #5d52b8;
+}
+
+
+/* =========================================
+   FILTERS
+========================================= */
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-select {
+    border: none;
+    outline: none;
+    background: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #5c5665;
+    box-shadow: 0 3px 15px rgba(60, 48, 100, 0.05);
+}
+
+
+/* =========================================
+   PRODUCTS PAGE
+========================================= */
+/* =========================================
+   ADD PRODUCT MODAL
+========================================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(35, 30, 50, 0.45);
+
+    padding: 20px;
+
+    /* Change to flex when opening with JS */
+    display: none;
+}
+
+
+/* =========================================
+   MODAL CONTAINER
+========================================= */
+
+.product-modal {
+    width: 100%;
+    max-width: 600px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(40, 30, 70, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MODAL HEADER
+========================================= */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 25px 28px;
+
+    border-bottom: 1px solid #eeeaf3;
+}
+
+.modal-header h2 {
+    font-size: 21px;
+    color: #353044;
+
+    margin-bottom: 5px;
+}
+
+.modal-header p {
+    font-size: 12px;
+    color: #9993a2;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #f3f0f8;
+    color: #77717f;
+
+    font-size: 22px;
+    line-height: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-close:hover {
+    background: #ebe7f1;
+    color: #4f485b;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+#add-product-form {
+    padding: 25px 28px 28px;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #514b5b;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    border: 1px solid #e5e1eb;
+
+    outline: none;
+
+    background: #faf9fc;
+
+    color: #494353;
+
+    border-radius: 10px;
+
+    padding: 12px 13px;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa5b1;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #5d52b8;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px rgba(93, 82, 184, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+
+/* =========================================
+   MODAL FOOTER
+========================================= */
+
+.modal-footer {
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeaf3;
+}
+
+.modal-cancel {
+
+    border: none;
+
+    background: #f3f0f8;
+
+    color: #77717f;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.modal-cancel:hover {
+    background: #ebe7f1;
+}
+
+
+/* =========================================
+   RESPONSIVE MODAL
+========================================= */
+
+@media (max-width: 600px) {
+
+    .product-modal {
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f4f1f8;
-        color: #292631;
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 
-    button,
-    input {
-        font-family: inherit;
+    .form-group.full-width {
+        grid-column: auto;
     }
 
-    /* =========================
-        MAIN POS CONTAINER
-    ========================= */
+    .modal-footer {
+        flex-direction: column-reverse;
+    }
 
-    .pos-container {
-        display: flex;
+    .modal-footer button {
         width: 100%;
-        min-height: 100vh;
-        background: #ffffff;
     }
+}
 
-    /* =========================
-        LEFT SIDEBAR
-    ========================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.product-admin-card {
+    padding: 20px;
+}
+
+.product-image-placeholder {
+    height: 130px;
+    border-radius: 12px;
+    background: #f1eef8;
+    margin-bottom: 15px;
+}
+
+.product-admin-card h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.product-admin-card p {
+    font-size: 12px;
+    color: #9993a2;
+    margin-bottom: 15px;
+}
+
+.product-admin-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price {
+    color: #5d52b8;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.product-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.icon-button {
+    border: none;
+    background: #f2eff7;
+    padding: 8px;
+    border-radius: 8px;
+    color: #5d52b8;
+}
+
+
+/* =========================================
+   REPORTS
+========================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    padding: 20px;
+}
+
+.stat-card p {
+    color: #9993a2;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    font-size: 25px;
+    color: #3d3848;
+}
+
+.stat-change {
+    font-size: 11px;
+    margin-top: 8px;
+    color: #5d52b8;
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.report-card {
+    padding: 25px;
+    min-height: 300px;
+}
+
+.report-card h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.chart-placeholder {
+    height: 220px;
+    background: #f7f5fa;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa4b2;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
 
     .sidebar {
-        width: 230px;
-        min-height: 100vh;
-        background: #5d52b8;
-        color: white;
-        display: flex;
+        width: 190px;
+    }
+
+    .order-panel {
+        width: 330px;
+    }
+
+    .page-content,
+    .pos-products {
+        padding: 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .pos-container {
         flex-direction: column;
-        padding: 30px 18px;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 15px;
     }
 
     .logo {
-        padding: 0 15px;
-        margin-bottom: 45px;
-    }
-
-    .logo h1 {
-        font-size: 24px;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-    }
-
-    .logo span {
-        font-size: 12px;
-        opacity: 0.7;
+        margin-bottom: 15px;
     }
 
     .nav-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row;
     }
 
     .nav-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding: 15px 16px;
-        border-radius: 12px;
-        color: rgba(255, 255, 255, 0.75);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        transition: 0.2s ease;
-    }
-
-    .nav-item:hover {
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
-    }
-
-    .nav-item.active {
-        background: rgba(255, 255, 255, 0.18);
-        color: white;
-    }
-
-    .nav-icon {
-        width: 20px;
-        text-align: center;
-        font-size: 17px;
+        flex: 1;
+        justify-content: center;
     }
 
     .sidebar-bottom {
-        margin-top: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        display: none;
     }
-
-    /* =========================
-        MIDDLE CONTENT
-    ========================= */
-
-    .products-section {
-        flex: 1;
-        min-width: 0;
-        padding: 35px 35px;
-        background: #faf9fc;
-    }
-
-    .top-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 30px;
-    }
-
-    .page-title h2 {
-        font-size: 28px;
-        color: #353044;
-        margin-bottom: 5px;
-    }
-
-    .page-title p {
-        color: #96919f;
-        font-size: 13px;
-    }
-
-    .top-actions {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .search-box {
-        width: 240px;
-        position: relative;
-    }
-
-    .search-box input {
-        width: 100%;
-        border: none;
-        outline: none;
-        background: white;
-        padding: 13px 15px 13px 40px;
-        border-radius: 12px;
-        box-shadow: 0 3px 15px rgba(60, 48, 100, 0.06);
-        font-size: 13px;
-    }
-
-    .search-icon {
-        position: absolute;
-        left: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #9994a4;
-    }
-
-    /* =========================
-        CATEGORY TABS
-    ========================= */
-
-    .categories {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 25px;
-    }
-
-    .category {
-        border: none;
-        background: white;
-        color: #777280;
-        padding: 13px 27px;
-        border-radius: 12px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 600;
-        box-shadow: 0 3px 15px rgba(60, 48, 100, 0.05);
-    }
-
-    .category:hover {
-        background: #f0edff;
-        color: #5d52b8;
-    }
-
-    .category.active {
-        background: #5d52b8;
-        color: white;
-    }
-
-    /* =========================
-        EMPTY PRODUCT AREA
-    ========================= */
-
-    .product-area {
-        min-height: 600px;
-        background: white;
-        border-radius: 18px;
-        padding: 25px;
-        box-shadow: 0 5px 25px rgba(60, 48, 100, 0.05);
-    }
-
-    /*
-        Your JavaScript can populate this element.
-
-        Example future structure:
-
-        <div class="product-card">
-            ...
-        </div>
-    */
-
-    #product-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 20px;
-    }
-
-    /* =========================
-        RIGHT ORDER PANEL
-    ========================= */
 
     .order-panel {
-        width: 390px;
-        min-height: 100vh;
-        background: white;
-        border-left: 1px solid #eeeaf3;
-        padding: 35px 28px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .order-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 25px;
-    }
-
-    .order-header h2 {
-        font-size: 21px;
-        color: #353044;
-    }
-
-    .order-number {
-        font-size: 12px;
-        color: #9a95a3;
-    }
-
-    /* =========================
-        CUSTOMER / TABLE INFO
-    ========================= */
-
-    .order-info {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 25px;
-    }
-
-    .info-box {
-        flex: 1;
-        background: #f7f5fa;
-        padding: 12px;
-        border-radius: 10px;
-    }
-
-    .info-box label {
-        display: block;
-        font-size: 10px;
-        color: #9993a2;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-    }
-
-    .info-box span {
-        font-size: 13px;
-        font-weight: 600;
-        color: #494353;
-    }
-
-    /* =========================
-        ORDER ITEMS
-    ========================= */
-
-    .order-items-title {
-        display: flex;
-        justify-content: space-between;
-        color: #77717f;
-        font-size: 12px;
-        font-weight: 600;
-        padding-bottom: 12px;
-        border-bottom: 1px solid #eeeaf1;
-    }
-
-    #order-items {
-        flex: 1;
-        overflow-y: auto;
-        padding: 10px 0;
-    }
-
-    /*
-        JavaScript can insert order items here.
-
-        Suggested structure:
-
-        <div class="order-item">
-            <div class="item-details">
-                <h4>...</h4>
-                <span>...</span>
-            </div>
-            <div class="item-price">...</div>
-        </div>
-    */
-
-    .order-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #f0edf3;
-    }
-
-    .item-details h4 {
-        font-size: 13px;
-        color: #413c49;
-        margin-bottom: 5px;
-    }
-
-    .item-details span {
-        font-size: 11px;
-        color: #9993a2;
-    }
-
-    .item-price {
-        font-size: 13px;
-        font-weight: 600;
-        color: #494353;
-    }
-
-    /* =========================
-        ORDER SUMMARY
-    ========================= */
-
-    .order-summary {
-        border-top: 1px solid #eeeaf1;
-        padding-top: 20px;
-        margin-top: 10px;
-    }
-
-    .summary-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 12px;
-        font-size: 13px;
-        color: #77717f;
-    }
-
-    .summary-row span:last-child {
-        color: #494353;
-        font-weight: 600;
-    }
-
-    .summary-total {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 18px;
-        padding-top: 18px;
-        border-top: 1px dashed #ddd8e5;
-    }
-
-    .summary-total span:first-child {
-        font-size: 14px;
-        font-weight: 600;
-        color: #514b5b;
-    }
-
-    .total-price {
-        font-size: 25px;
-        font-weight: 700;
-        color: #5d52b8;
-    }
-
-    /* =========================
-        PAYMENT BUTTON
-    ========================= */
-
-    .payment-button {
         width: 100%;
-        border: none;
-        background: #5d52b8;
-        color: white;
-        padding: 16px;
-        border-radius: 12px;
-        margin-top: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
+        min-height: 500px;
     }
 
-    .payment-button:hover {
-        background: #4d43a2;
+    .report-grid {
+        grid-template-columns: 1fr;
     }
-
-    .clear-button {
-        width: 100%;
-        border: none;
-        background: #f3f0f8;
-        color: #77717f;
-        padding: 13px;
-        border-radius: 12px;
-        margin-top: 10px;
-        font-size: 13px;
-        cursor: pointer;
-    }
-
-    .clear-button:hover {
-        background: #ebe7f1;
-    }
-
-    /* =========================
-        RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1100px) {
-        .sidebar {
-            width: 190px;
-        }
-
-        .order-panel {
-            width: 330px;
-        }
-
-        .products-section {
-            padding: 25px;
-        }
-    }
-
-    @media (max-width: 850px) {
-        .pos-container {
-            flex-direction: column;
-        }
-
-        .sidebar {
-            width: 100%;
-            min-height: auto;
-            padding: 15px;
-        }
-
-        .logo {
-            margin-bottom: 15px;
-        }
-
-        .nav-menu {
-            flex-direction: row;
-        }
-
-        .nav-item {
-            flex: 1;
-            justify-content: center;
-        }
-
-        .sidebar-bottom {
-            display: none;
-        }
-
-        .order-panel {
-            width: 100%;
-            min-height: 500px;
-        }
-    }
+}
