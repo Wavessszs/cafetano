@@ -904,3 +904,572 @@ button {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+/* TABLET / SMALL DESKTOP */
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .order-panel {
+        width: 330px;
+    }
+
+    .page-content,
+    .pos-products {
+        padding: 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .pos-container {
+        flex-direction: column;
+    }
+
+    /* -----------------------------
+       SIDEBAR
+    ----------------------------- */
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+
+        padding: 12px;
+
+        flex-direction: row;
+        align-items: center;
+
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo {
+        padding: 0 10px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    .nav-menu {
+        flex: 1;
+
+        display: flex;
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+    }
+
+    .nav-item {
+        flex: 1;
+
+        min-width: 80px;
+
+        justify-content: center;
+
+        padding: 11px 8px;
+
+        font-size: 12px;
+
+        gap: 5px;
+    }
+
+    .nav-icon {
+        font-size: 15px;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+
+    /* -----------------------------
+       GENERAL PAGE
+    ----------------------------- */
+
+    .page-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .page-header {
+        gap: 15px;
+    }
+
+
+    /* -----------------------------
+       POS
+    ----------------------------- */
+
+    .pos-products {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .categories {
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .category {
+        flex-shrink: 0;
+        padding: 12px 20px;
+    }
+
+    .product-area {
+        min-height: auto;
+        padding: 18px;
+    }
+
+    #product-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+
+    /* -----------------------------
+       ORDER PANEL
+    ----------------------------- */
+
+    .order-panel {
+        width: 100%;
+        height: auto;
+
+        min-height: 450px;
+
+        border-left: none;
+        border-top: 1px solid #eeeaf3;
+
+        padding: 25px 20px;
+
+        position: static;
+    }
+
+    #order-items {
+        max-height: 300px;
+    }
+
+
+    /* -----------------------------
+       PRODUCTS PAGE
+    ----------------------------- */
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-admin-card {
+        padding: 15px;
+    }
+
+    .product-image-placeholder {
+        height: 110px;
+    }
+
+
+    /* -----------------------------
+       REPORTS
+    ----------------------------- */
+
+    .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* -----------------------------
+       GLOBAL
+    ----------------------------- */
+
+    body {
+        font-size: 14px;
+    }
+
+    .pos-container {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       MOBILE NAVIGATION
+    ----------------------------- */
+
+    .sidebar {
+        padding: 10px;
+
+        gap: 8px;
+    }
+
+    .logo {
+        padding: 0 5px;
+    }
+
+    .logo h1 {
+        font-size: 17px;
+    }
+
+    .nav-menu {
+        gap: 3px;
+    }
+
+    .nav-item {
+        min-width: 65px;
+
+        padding: 9px 5px;
+
+        flex-direction: column;
+
+        gap: 3px;
+
+        border-radius: 9px;
+
+        font-size: 10px;
+    }
+
+    .nav-icon {
+        font-size: 15px;
+    }
+
+
+    /* -----------------------------
+       PAGE HEADER
+    ----------------------------- */
+
+    .page-content {
+        padding: 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        margin-bottom: 20px;
+    }
+
+    .page-title h2 {
+        font-size: 23px;
+    }
+
+    .page-title p {
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------
+       SEARCH
+    ----------------------------- */
+
+    .search-box {
+        width: 100%;
+        margin: 5px 0 0;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       FILTERS
+    ----------------------------- */
+
+    .filters {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       POS PRODUCTS
+    ----------------------------- */
+
+    .pos-products {
+        padding: 15px;
+    }
+
+    .categories {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .category {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+
+    .product-area {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    #product-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+
+    /* -----------------------------
+       PRODUCT CARDS
+    ----------------------------- */
+
+    .product-admin-card {
+        padding: 12px;
+    }
+
+    .product-image-placeholder {
+        height: 90px;
+
+        margin-bottom: 10px;
+    }
+
+    .product-admin-card h3 {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .product-admin-card p {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+    .icon-button {
+        padding: 7px;
+    }
+
+
+    /* -----------------------------
+       ORDER PANEL
+    ----------------------------- */
+
+    .order-panel {
+        padding: 20px 15px;
+
+        min-height: auto;
+    }
+
+    .order-header {
+        margin-bottom: 18px;
+    }
+
+    .order-header h2 {
+        font-size: 19px;
+    }
+
+    .order-info {
+        margin-bottom: 18px;
+    }
+
+    .info-box {
+        padding: 10px;
+    }
+
+    .info-box label {
+        font-size: 9px;
+    }
+
+    .info-box span {
+        font-size: 12px;
+    }
+
+    #order-items {
+        max-height: 250px;
+    }
+
+    .summary-row {
+        font-size: 12px;
+    }
+
+    .total-price {
+        font-size: 22px;
+    }
+
+    .payment-button {
+        padding: 15px;
+    }
+
+
+    /* -----------------------------
+       TABLE
+    ----------------------------- */
+
+    .table-card {
+        padding: 10px;
+
+        overflow-x: auto;
+    }
+
+    .data-table {
+        min-width: 700px;
+    }
+
+    .data-table th {
+        padding: 12px 10px;
+    }
+
+    .data-table td {
+        padding: 13px 10px;
+    }
+
+
+    /* -----------------------------
+       REPORTS
+    ----------------------------- */
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-card p {
+        font-size: 10px;
+    }
+
+    .stat-card h3 {
+        font-size: 20px;
+    }
+
+    .report-card {
+        padding: 18px;
+    }
+
+
+    /* -----------------------------
+       MODAL
+    ----------------------------- */
+
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .product-modal {
+        width: 100%;
+        max-height: 90vh;
+
+        border-radius: 14px;
+    }
+
+    .modal-header {
+        padding: 18px;
+    }
+
+    .modal-header h2 {
+        font-size: 18px;
+    }
+
+    #add-product-form {
+        padding: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+
+        margin-top: 18px;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .logo h1 {
+        font-size: 15px;
+    }
+
+    .nav-item {
+        min-width: 55px;
+        font-size: 9px;
+    }
+
+    .nav-icon {
+        font-size: 13px;
+    }
+
+    #product-list {
+        gap: 8px;
+    }
+
+    .product-admin-card {
+        padding: 10px;
+    }
+
+    .product-image-placeholder {
+        height: 75px;
+    }
+
+    .product-admin-card h3 {
+        font-size: 12px;
+    }
+
+    .product-admin-card p {
+        font-size: 10px;
+    }
+
+    .product-price {
+        font-size: 13px;
+    }
+
+}
