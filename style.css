@@ -210,6 +210,7 @@ button {
 .pos-products {
     flex: 1;
     padding: 35px;
+
 }
 
 .categories {
@@ -260,10 +261,13 @@ button {
 
 .order-panel {
     width: 390px;
-    min-height: 100vh;
+    height: 100vh;
     background: white;
     border-left: 1px solid #eeeaf3;
     padding: 35px 28px;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
 }
@@ -328,6 +332,7 @@ button {
 }
 
 .order-summary {
+
     border-top: 1px solid #eeeaf1;
     padding-top: 20px;
 }

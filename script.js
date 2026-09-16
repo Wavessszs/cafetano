@@ -3,7 +3,7 @@
 let cart = {};
 let all_products = [];
 let saved_products = [];
-
+let price_list = [];
 
 let flag = true;
 function add_product() {
@@ -23,7 +23,7 @@ function add_product() {
 const product_grid = document.getElementById("product-grid");
 const add_product_form = document.getElementById("add-product-form");
 const cart_grid = document.getElementById("order-items");
-
+const proceed_payment = document.getElementById("payment-button");
 
 
 
@@ -47,11 +47,11 @@ function renderProducts() {
 
             if (add_product_form) {
                 actions = `
-                <div class="product-actions">
-                    <button class="icon-button">✎</button>
-                    <button class="icon-button">×</button>
-                </div>
-                 `;
+                    <div class="product-actions">
+                        <button class="icon-button">✎</button>
+                        <button class="icon-button">×</button>
+                    </div>
+                    `;
             }
 
             const product_cards = all_products.map(product => {
@@ -61,24 +61,24 @@ function renderProducts() {
                 product_div.classList.add("product-admin-card");
                 product_div.id = product.id;
                 product_div.innerHTML = `
-                <div class="product-image-placeholder"></div>
+                    <div class="product-image-placeholder"></div>
 
-                <h1 style="display:none">${product.id}</h1> 
+                    <h1 style="display:none">${product.id}</h1> 
 
-                <h3>${product.name}</h3>
+                    <h3>${product.name}</h3>
 
-                <p>${product.category}</p>
+                    <p>${product.category}</p>
 
-                <p>${product.description}</p>
+                    <p>${product.description}</p>
 
-                <div class="product-admin-footer">
-                <span class="product-price">₱${product.price}</span>
+                    <div class="product-admin-footer">
+                    <span class="product-price">₱${product.price}</span>
 
-                
-                ${actions}
+                    
+                    ${actions}
 
-                </div>
-            `;
+                    </div>
+                `;
                 product_div.addEventListener("click", function () {
                     if (add_product_form) {
                         alert("olol");
@@ -94,6 +94,8 @@ function renderProducts() {
                         }
                         console.log(cart);
                         renderCart();
+                        computeSubtotal();
+
                     }
                 });
 
@@ -105,7 +107,7 @@ function renderProducts() {
                 product_grid.appendChild(card);
             });
         });
-     
+
 }
 function renderCart() {
 
@@ -121,10 +123,11 @@ function renderCart() {
         const cart_div = document.createElement("div");
 
         cart_div.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>${quantity} × ₱${product.price}</p>
-            <p>₱${product.price * quantity}</p>
-        `;
+                <h3>${product.name}</h3>
+                <p>${quantity} × ₱${product.price}</p>
+                <p>₱${product.price * quantity}</p>
+            `;
+
 
         return cart_div;
     });
@@ -134,6 +137,57 @@ function renderCart() {
 
 }
 
+function computeSubtotal() {
+
+
+    const product_price = Object.keys(cart).map(product_id => {
+        const products_id = all_products.find(
+            product => product.id == product_id
+        );
+
+        const quantity = cart[product_id];//quantty
+
+        return products_id.price * quantity;//this is id of the price
+    });
+    //got the price already now the quanitty
+    console.log(product_price);
+    const subtotal = product_price.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+    }, 0);
+    console.log(subtotal);
+
+    const subtotal_value = document.getElementById("subtotal");
+    subtotal_value.innerText = `₱ ${subtotal.toFixed(2)}`;
+
+    const tax_value = document.getElementById("tax");
+    tax_total = (subtotal * .12);
+    tax_value.innerText = `₱ ${tax_total.toFixed(2)}`;
+
+    const total_value = document.getElementById("total");
+    total_total = subtotal + tax_total;
+    total_value.innerText = `₱ ${total_total.toFixed(2)}`;
+
+
+}
+
+if (proceed_payment) {
+    proceed_payment.addEventListener("click", function () {
+
+        const saved_orders =
+            JSON.parse(localStorage.getItem("orders")) || [];
+
+        saved_orders.push(cart);
+
+        localStorage.setItem(
+            "orders",
+            JSON.stringify(saved_orders)
+        );
+
+        console.log("Order saved:", cart);
+        alert("order saved!");
+
+    });
+}
 if (add_product_form) {
     add_product_form.addEventListener("submit", function (event) {
 
@@ -178,4 +232,51 @@ if (add_product_form) {
 }
 
 renderProducts();
+const orders_table = document.getElementById("orders-table-body");
 
+if (orders_table) {
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    fetch("products.json")
+        .then(response => response.json())
+        .then(products => {
+
+            orders.forEach((order, order_index) => {
+
+                let item_count = 0;
+                let total = 0;
+
+                Object.keys(order).forEach(product_id => {
+
+                    const product = products.find(
+                        product => product.id == product_id
+                    );
+
+                    const quantity = order[product_id];
+
+                    item_count += quantity;
+                    total += product.price * quantity;
+
+                });
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>#${order_index + 1}</td>
+                    <td>${new Date().toLocaleDateString()}</td>
+                    <td>Takeout</td>
+                    <td>${item_count}</td>
+                    <td>₱${total.toFixed(2)}</td>
+                    <td>Completed</td>
+                    <td>
+                        <button>View</button>
+                    </td>
+                `;
+
+                orders_table.appendChild(row);
+            });
+
+        });
+}
