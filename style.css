@@ -300,6 +300,7 @@ button {
     background: #f7f5fa;
     padding: 12px;
     border-radius: 10px;
+
 }
 
 .info-box label {
@@ -313,6 +314,20 @@ button {
 .info-box span {
     font-size: 13px;
     font-weight: 600;
+}
+
+.info-box select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #292631;
+
+    cursor: pointer;
 }
 
 .order-items-title {
@@ -1055,11 +1070,8 @@ button {
     /* -----------------------------
        ORDER PANEL
     ----------------------------- */
-
     .order-panel {
         width: 100%;
-        height: auto;
-
         min-height: 450px;
 
         border-left: none;
@@ -1284,52 +1296,67 @@ button {
        ORDER PANEL
     ----------------------------- */
 
-    .order-panel {
-        padding: 20px 15px;
+    /* -----------------------------
+   MOBILE ORDER PANEL
+----------------------------- */
 
-        min-height: auto;
+    @media (max-width: 600px) {
+        .order-panel {
+            position: fixed;
+            top: auto;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 12vh;
+            min-height: 0;
+
+            background: white;
+            border: none;
+            border-radius: 40px 40px 0 0;
+
+            padding: 20px 20px 20px;
+
+            z-index: 500;
+
+            box-shadow:
+                0 -8px 30px rgba(60, 48, 100, 0.12);
+
+            overflow: hidden;
+
+            transition: height 0.3s ease;
+        }
+
+        .order-panel.expanded {
+            height: 72vh;
+        }
+
+        #order-items {
+            max-height: none;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding: 10px 0;
+        }
+
+        .order-summary {
+            flex-shrink: 0;
+            background: white;
+        }
+
+        .summary-row {
+            font-size: 12px;
+        }
+
+        .total-price {
+            font-size: 22px;
+        }
+
+        .payment-button {
+            padding: 15px;
+        }
     }
-
-    .order-header {
-        margin-bottom: 18px;
-    }
-
-    .order-header h2 {
-        font-size: 19px;
-    }
-
-    .order-info {
-        margin-bottom: 18px;
-    }
-
-    .info-box {
-        padding: 10px;
-    }
-
-    .info-box label {
-        font-size: 9px;
-    }
-
-    .info-box span {
-        font-size: 12px;
-    }
-
-    #order-items {
-        max-height: 250px;
-    }
-
-    .summary-row {
-        font-size: 12px;
-    }
-
-    .total-price {
-        font-size: 22px;
-    }
-
-    .payment-button {
-        padding: 15px;
-    }
-
 
     /* -----------------------------
        TABLE

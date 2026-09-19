@@ -103,7 +103,7 @@
 
             </div>
 
-        
+
             <!--
                 EMPTY PRODUCT CONTAINER
 
@@ -156,14 +156,22 @@
 
                 <div class="info-box">
                     <label>Order Type</label>
-                    <span>Dine In</span>
+                    <select id="order-type">
+                        <option value="dine-in" selected>Dine In</option>
+                        <option value="takeout">Takeout</option>
+
+                    </select>
                 </div>
 
                 <div class="info-box">
-                    <label>Table</label>
-                    <span>--</span>
+                    <label>Discount Type</label>
+                    <select id="discount-type" onchange="computeSubtotal();">
+                        <option value="none" selected>None</option>
+                        <option value="pwd">PWD (20%)</option>
+                        <option value="senior">Senior Citizen (20%)</option>
+                        <option value="student">Student (10%)</option>
+                    </select>
                 </div>
-
             </div>
 
 
